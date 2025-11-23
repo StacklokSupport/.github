@@ -1,6 +1,66 @@
 
 # Setup Guide - For Stacklok Team
 
+## Onboarding a New Support Organization: Stacklok/infra
+
+The following guide details how to onboard a new support organization using the changes and processes found in [PR #3640](https://github.com/stacklok/infra/pull/3640).
+
+### 1. Key Files Involved
+The onboarding process is managed by Terraform configuration in these files:
+- `github/providers.tf`  
+- `github/stackloksupport.tf`  
+- `.github/workflows/terraform-apply-github.yaml`  
+- `.github/workflows/terraform-github-preview.yaml`  
+- `github/.terraform.lock.hcl`  
+
+### 2. Support Organization Structure
+- The Stacklok support team is managed via the `stackloksupport` GitHub organization.
+- Each new customer receives:
+  - A private repository in `stackloksupport`
+  - A corresponding Slack support channel
+
+### 3. Adding a New Customer Organization
+To onboard a new support org:
+1. **Edit `github/stackloksupport.tf`**
+   - Add the new organization under `locals.customer_orgs` with desired `name`, `visibility`, and `members` (GitHub usernames for customer employees).
+   - Example:
+     ```hcl
+     TestOrg3 = {
+       name           = "TestOrg3"
+       visibility     = "private"
+       default_branch = "main"
+       members = [
+         "customer3_username1",
+         "customer3_username2"
+       ]
+     }
+     ```
+
+2. **Add Customer Members**
+   - List each customer member in the `members` array to grant access.
+   - They will be invited as **Outside Collaborators** to their repo.
+
+3. **Stacklok Support Team**
+   - Stacklok support members are managed via the `local.team_members`.
+   - Each support member gets added to both the org and a “stacklok-support” team with "maintain" access.
+
+### 4. Slack Integration
+- Each customer repo automatically has a matching Slack channel created (see `slack_conversation` resource).
+- Ensure the Slack token is configured as a secret (`SLACK_API_TOKEN`) in GitHub workflow files:
+  - `.github/workflows/terraform-apply-github.yaml`
+  - `.github/workflows/terraform-github-preview.yaml`
+
+### 5. Other Steps
+- Update lock and provider files as required (`github/.terraform.lock.hcl`, `github/providers.tf`).
+- Remove or adjust legacy org definitions in files like `github/orgs.tf` (now removed per PR).
+- Use the relevant workflow files to apply and preview changes.
+
+---
+
+
+
+
+
 ## Quick Setup (5 minutes)
 
 ### 1. Create New Customer Repository
