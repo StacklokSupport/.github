@@ -1,1 +1,77 @@
-# See https://github.com/StacklokSupport/customer-support-template/blob/main/.github/ISSUE_TEMPLATE/question.yml
+name: ❓ General Question
+description: Ask a question about usage, configuration, or functionality
+title: "[Question]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about ToolHive? Fill out the details below and we'll get back to you.
+        
+        > **Note:** Support for MCP servers not built and maintained by ToolHive is provided on a reasonable-efforts basis only.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Urgency Level
+      description: How urgently do you need an answer?
+      options:
+        - "1 - Critical: Blocking production workloads"
+        - "2 - High: Blocking active work, need answer soon"
+        - "3 - Medium: Non-blocking, but time-sensitive"
+        - "4 - Low: General curiosity or planning ahead"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Related Component
+      description: Which part of ToolHive does your question relate to?
+      options:
+        - Kubernetes Operator
+        - MCP Runtime
+        - Registry Server
+        - Unified Gateway
+        - Desktop UI
+        - Web UI
+        - General / Architecture
+        - Other / Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: Ask your question clearly and concisely.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context & Background
+      description: What are you trying to accomplish? What have you already tried or looked up?
+      placeholder: |
+        - What you're trying to do:
+        - What you've already tried:
+        - Relevant docs or resources you've reviewed:
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (if applicable)
+      description: Include environment details if relevant to your question.
+      placeholder: |
+        - ToolHive version:
+        - Kubernetes version:
+        - OS / Platform:
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on Your Operations
+      description: How does this question relate to your current work or operations?
