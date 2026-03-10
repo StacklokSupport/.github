@@ -1,1 +1,75 @@
-# See https://github.com/StacklokSupport/customer-support-template/blob/main/.github/ISSUE_TEMPLATE/feature-request.yml
+name: ✨ Feature Request
+description: Suggest new functionality or an enhancement for ToolHive
+title: "[Feature]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much context as possible so we can understand the use case and evaluate the request.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Priority Level
+      description: How important is this feature to your operations?
+      options:
+        - "1 - Critical: Blocking adoption or a key workflow"
+        - "2 - High: Significant improvement to core workflows"
+        - "3 - Medium: Useful enhancement, workaround exists"
+        - "4 - Low: Nice to have, minimal operational impact"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Relevant Component
+      description: Which part of ToolHive would this feature affect?
+      options:
+        - Kubernetes Operator
+        - MCP Runtime
+        - Registry Server
+        - Unified Gateway
+        - Desktop UI
+        - Web UI
+        - Other / Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem are you trying to solve? What limitation or gap does this address?
+      placeholder: "I'm trying to do X, but currently I can't because..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the feature or change you'd like to see. Be as specific as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative approaches or workarounds?
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on Your Operations
+      description: How would this feature improve your team's workflows or operations? Who would benefit?
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, mockups, references, or examples that would help illustrate the request.
