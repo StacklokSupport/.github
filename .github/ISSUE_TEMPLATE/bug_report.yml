@@ -16,10 +16,8 @@ body:
       label: Severity Level
       description: Select the severity that best describes the impact of this bug.
       options:
-        - "1 - Critical: System is down or data loss is occurring"
-        - "2 - High: Major functionality is impaired, no workaround"
-        - "3 - Medium: Functionality is impaired, workaround exists"
-        - "4 - Low: Minor issue, cosmetic, or minimal impact"
+        - "0 - Total loss of service or critical functionality. No workaround available. Immediate engagement, continuous resolution until restored."
+        - "1 - Major functionality degraded. Business operations significantly impacted. High-priority mitigation within SLA windows."
     validations:
       required: true
 
