@@ -14,8 +14,10 @@ body:
       label: Priority Level
       description: How important is this feature to your operations?
       options:
-        - "0 - Total loss of service or critical functionality. No workaround available. Immediate engagement, continuous resolution until restored."
-        - "1 - Major functionality degraded. Business operations significantly impacted. High-priority mitigation within SLA windows."
+        - "0 - Total loss of service or critical functionality. No workaround available. Immediate engagement, continuous resolution until restored"
+        - "1 - Major functionality degraded. Business operations significantly impacted. High-priority mitigation within SLA windows"
+        - "2 - Useful enhancement, workaround exists"
+        - "3 - Nice to have, minimal operational impact"
     validations:
       required: true
 
